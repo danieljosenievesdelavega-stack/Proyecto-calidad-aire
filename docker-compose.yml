@@ -1,0 +1,35 @@
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: dockerfile
+    command: python -m streamlit run src/dashboard/app.py --server.port=8501
+    environment:
+      AIR_ALLOWED_ORIGINS: ${AIR_ALLOWED_ORIGINS:-http://localhost:8501,http://localhost:8502,http://127.0.0.1:8501,http://127.0.0.1:8502}
+      DATABASE_URL: ${DATABASE_URL:-}
+    ports:
+      - "8502:8501"
+    volumes:
+      - ./data/processed:/app/data/processed
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  api:
+    build:
+      context: .
+      dockerfile: dockerfile
+    command: python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
+    environment:
+      AIR_ALLOWED_ORIGINS: ${AIR_ALLOWED_ORIGINS:-http://localhost:8501,http://localhost:8502,http://127.0.0.1:8501,http://127.0.0.1:8502}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/processed:/app/data/processed
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

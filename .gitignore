@@ -1,0 +1,21 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Variables de entorno / secretos (CRITICO -- nunca subir esto)
+.env
+
+# Datos pesados (no van al repo, viven en R2/local)
+data/raw/
+data/interim/
+data/processed/
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Logs
+logs/*.log
+
+# Streamlit
+.streamlit/secrets.toml

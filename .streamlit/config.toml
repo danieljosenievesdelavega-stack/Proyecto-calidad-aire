@@ -1,0 +1,12 @@
+[theme]
+# Cambia el color de sliders, botones y elementos activos
+primaryColor = "#00D4B2" 
+
+# Tu fondo oscuro actual
+backgroundColor = "#0E1117" 
+
+# Cambia automáticamente el color de la sidebar y cajones de texto
+secondaryBackgroundColor = "#101A24" 
+
+# Asegura que el texto contraste bien
+textColor = "#FAFAFA"

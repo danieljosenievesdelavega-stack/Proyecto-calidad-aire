@@ -1,0 +1,14 @@
+duckdb>=1.5,<2
+pandas>=2.2,<4
+numpy>=2.0,<3
+pyarrow>=18,<23
+scikit-learn>=1.5,<2
+requests>=2.32,<3
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
+streamlit>=1.42,<2
+plotly>=6,<7
+pytest>=8,<9
+SQLAlchemy>=2,<3
+psycopg2-binary>=2.9,<3
+python-dotenv>=1,<2

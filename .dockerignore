@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+notebooks/
+reports/
+test/
+data/raw/
+data/clean/
+data/interim/
+docker/
